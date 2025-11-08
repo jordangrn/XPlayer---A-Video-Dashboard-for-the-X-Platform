@@ -1,6 +1,6 @@
 # XPlayer 🎬
 
-A modern video player platform for X/Twitter content, featuring a YouTube-like interface with support for both standard videos (16:9) and short-form "Micros" (9:16).
+A modern video player platform for X content, featuring a YouTube-like interface with support for both standard videos (16:9) and short-form "Micros" (9:16).
 
 ![XPlayer Preview](./screenshots/xplayer-preview.jpeg)
 
