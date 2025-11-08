@@ -1,16 +1,16 @@
-# XPlayer 🎬
+# 𝕏Player
 
-A modern video player platform for X content, featuring a YouTube-like interface with support for both standard videos (16:9) and short-form "Micros" (9:16).
+A modern video player platform for 𝕏 content, featuring a YouTube-like interface with support for both standard videos (16:9) and short-form "Micros" (9:16).
 
-![XPlayer Preview](./screenshots/xplayer-preview.jpeg)
+![𝕏Player Preview](./screenshots/xplayer-preview.jpeg)
 
-## Features ✨
+## Features
 
-- **16:9 Gallery Videos**: Browse popular X videos 5+ minutes in length
+- **16:9 Gallery Videos**: Browse popular 𝕏 videos 5+ minutes in length
 - **9:16 Micros**: Discover short-form content under 1 minute
 - **Infinite Scroll**: Seamless browsing experience with 3 rows of videos followed by Micros
-- **Live X API Integration**: Real-time video data from X
-- **Modern UI**: Clean, responsive interface inspired by YouTube and X
+- **Live 𝕏 API Integration**: Real-time video data from 𝕏
+- **Modern UI**: Clean, responsive interface inspired by YouTube and 𝕏
 - **Secure Backend**: API keys never exposed to the frontend
 
 ## Tech Stack 
@@ -23,7 +23,7 @@ A modern video player platform for X content, featuring a YouTube-like interface
 
 ### Backend
 - Node.js + Express
-- X API v2
+- 𝕏 API v2
 - In-memory caching (node-cache)
 - CORS enabled
 
@@ -46,13 +46,13 @@ XPlayer/
 └── README.md
 ```
 
-## Getting Started 🚀
+## Getting Started 
 
 ### Prerequisites
 
 - Node.js (v14 or higher)
 - npm or yarn
-- X Developer Account with API credentials
+- 𝕏 Developer Account with API credentials
 
 ### 1. Clone the Repository
 
@@ -74,7 +74,7 @@ Create a `.env` file in the `server` directory:
 cp .env.example .env
 ```
 
-Edit `.env` and add your X/Twitter API credentials:
+Edit `.env` and add your 𝕏/ credentials:
 
 ```env
 TWITTER_BEARER_TOKEN=your_bearer_token_here
@@ -82,8 +82,8 @@ PORT=5000
 NODE_ENV=development
 ```
 
-**How to get X API credentials:**
-1. Go to [X Developer Portal](https://developer.twitter.com/en/portal/dashboard)
+**How to get 𝕏 API credentials:**
+1. Go to [𝕏 Developer Portal](https://developer.twitter.com/en/portal/dashboard)
 2. Create a project and app
 3. Generate a Bearer Token
 4. Copy the token to your `.env` file
@@ -115,7 +115,7 @@ Frontend will run on `http://localhost:3000`
 
 ### 5. Open in Browser
 
-Navigate to `http://localhost:3000` to see XPlayer in action!
+Navigate to `http://localhost:3000` to see 𝕏Player in action!
 
 ## API Endpoints 🔌
 
@@ -126,7 +126,7 @@ Navigate to `http://localhost:3000` to see XPlayer in action!
 - `GET /api/search/videos?query=tech&maxResults=10` - Search for videos
 - `GET /api/tweet/:id` - Get specific tweet by ID
 
-## Configuration ⚙️
+## Configuration 
 
 ### Environment Variables
 
@@ -146,7 +146,7 @@ NODE_ENV=development
 REACT_APP_API_URL=http://localhost:5000/api
 ```
 
-## Development 💻
+## Development 
 
 ### Running in Development Mode
 
@@ -197,7 +197,7 @@ npm run build
 
 **NEVER commit your `.env` file to GitHub!**
 
-## Contributing 🤝
+## Contributing 
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -207,31 +207,31 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License 📄
+## License 
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments 🙏
+## Acknowledgments 
 
-- [X/Twitter API](https://developer.twitter.com/) for video data
+- [X API](https://developer.x.com/) for video data
 - [Feather Icons](https://feathericons.com/) for UI icons
 - [React](https://reactjs.org/) for the frontend framework
 - [Express](https://expressjs.com/) for the backend server
 
-## Roadmap 🗺️
+## Roadmap 
 
-- [ ] User authentication with X OAuth
-- [ ] Video playback with X embedded player
+- [ ] User authentication with 𝕏 OAuth
+- [ ] Video playback with 𝕏 embedded player
 - [ ] Advanced filtering (duration, popularity, date)
 - [ ] Playlist creation and management
 - [ ] Download functionality
 - [ ] Dark/Light theme toggle
 - [ ] Mobile app (React Native)
 
-## Support 💬
+## Support 
 
 If you have any questions or run into issues, please open an issue on GitHub.
 
 ---
 
-**Made with ❤️ for the X community**
+**Made with ❤️ for the 𝕏 community**
