@@ -42,32 +42,68 @@ const curatedVideos = {
   normalVideos: [
     {
       id: 'demo_1',
-      title: 'Sample Tech Review Video',
-      channel: 'TechReviewer',
-      duration: '8:45',
-      thumbnailUrl: 'https://via.placeholder.com/720x404',
-      views: 125000,
-      likes: 5200,
+      title: 'Joe Rogan Experience #2087 - Elon Musk',
+      channel: 'PowerfulJRE',
+      duration: '2:45:30',
+      thumbnailUrl: 'https://via.placeholder.com/640x360/1a1a1a/ffffff?text=Joe+Rogan+Experience',
+      avatarUrl: 'https://via.placeholder.com/150/ff0000/ffffff?text=JRE',
+      views: 3200000,
+      likes: 125000,
       isCurated: true
     },
     {
       id: 'demo_2',
-      title: 'Gaming Highlights Compilation',
-      channel: 'GameMaster',
-      duration: '12:30',
-      thumbnailUrl: 'https://via.placeholder.com/720x404',
-      views: 89000,
-      likes: 3100,
+      title: 'GTA 6 - Official Trailer Breakdown & Analysis',
+      channel: 'IGN',
+      duration: '12:45',
+      thumbnailUrl: 'https://via.placeholder.com/640x360/8B0000/ffffff?text=GTA+6+Trailer',
+      avatarUrl: 'https://via.placeholder.com/150/FF4500/ffffff?text=IGN',
+      views: 1890000,
+      likes: 78000,
       isCurated: true
     },
     {
       id: 'demo_3',
-      title: 'Cooking Tutorial: Advanced Techniques',
-      channel: 'ChefPro',
-      duration: '15:20',
-      thumbnailUrl: 'https://via.placeholder.com/720x404',
-      views: 67000,
-      likes: 2800,
+      title: 'MICHAEL - Official Trailer (2025) Michael Jackson Biopic',
+      channel: 'Lionsgate Movies',
+      duration: '2:34',
+      thumbnailUrl: 'https://via.placeholder.com/640x360/FFD700/000000?text=MICHAEL+Trailer',
+      avatarUrl: 'https://via.placeholder.com/150/4169E1/ffffff?text=LG',
+      views: 5670000,
+      likes: 234000,
+      isCurated: true
+    },
+    {
+      id: 'demo_4',
+      title: 'NFL Week 10 Highlights: Chiefs vs Bills | 2024 Season',
+      channel: 'NFL',
+      duration: '15:22',
+      thumbnailUrl: 'https://via.placeholder.com/640x360/013369/ffffff?text=NFL+Highlights',
+      avatarUrl: 'https://via.placeholder.com/150/D50A0A/ffffff?text=NFL',
+      views: 2450000,
+      likes: 95000,
+      isCurated: true
+    },
+    {
+      id: 'demo_5',
+      title: 'This 24 Year Old is $85,000 in Debt | Financial Audit',
+      channel: 'Caleb Hammer',
+      duration: '1:24:15',
+      thumbnailUrl: 'https://via.placeholder.com/640x360/2F4F4F/ffffff?text=Financial+Audit',
+      avatarUrl: 'https://via.placeholder.com/150/20B2AA/ffffff?text=CH',
+      views: 892000,
+      likes: 34000,
+      isCurated: true
+    },
+    {
+      id: 'demo_6',
+      title: 'Build a Modern Portfolio Website with React & Tailwind CSS',
+      channel: 'Web Dev Simplified',
+      duration: '45:18',
+      thumbnailUrl: 'https://via.placeholder.com/640x360/38BDF8/000000?text=Web+Dev+Tutorial',
+      avatarUrl: 'https://via.placeholder.com/150/06B6D4/ffffff?text=WDS',
+      views: 456000,
+      likes: 28000,
       isCurated: true
     },
   ],
@@ -77,7 +113,8 @@ const curatedVideos = {
       title: 'Quick Tech Tip',
       channel: 'TechShorts',
       duration: '0:45',
-      thumbnailUrl: 'https://via.placeholder.com/405x720',
+      thumbnailUrl: 'https://via.placeholder.com/360x640/4A5568/ffffff?text=Tech+Tip',
+      avatarUrl: 'https://via.placeholder.com/150/10B981/ffffff?text=TS',
       views: 45000,
       likes: 1200,
       isCurated: true
@@ -87,7 +124,8 @@ const curatedVideos = {
       title: 'Funny Gaming Moment',
       channel: 'GameClips',
       duration: '0:30',
-      thumbnailUrl: 'https://via.placeholder.com/405x720',
+      thumbnailUrl: 'https://via.placeholder.com/360x640/7C3AED/ffffff?text=Gaming',
+      avatarUrl: 'https://via.placeholder.com/150/A855F7/ffffff?text=GC',
       views: 78000,
       likes: 3400,
       isCurated: true
@@ -97,7 +135,8 @@ const curatedVideos = {
       title: 'Life Hack',
       channel: 'DailyHacks',
       duration: '0:55',
-      thumbnailUrl: 'https://via.placeholder.com/405x720',
+      thumbnailUrl: 'https://via.placeholder.com/360x640/F59E0B/000000?text=Life+Hack',
+      avatarUrl: 'https://via.placeholder.com/150/FBBF24/000000?text=DH',
       views: 92000,
       likes: 4100,
       isCurated: true
@@ -107,7 +146,8 @@ const curatedVideos = {
       title: 'Pet Trick',
       channel: 'PetVids',
       duration: '0:38',
-      thumbnailUrl: 'https://via.placeholder.com/405x720',
+      thumbnailUrl: 'https://via.placeholder.com/360x640/EC4899/ffffff?text=Pet+Trick',
+      avatarUrl: 'https://via.placeholder.com/150/F472B6/ffffff?text=PV',
       views: 156000,
       likes: 7800,
       isCurated: true
@@ -117,7 +157,8 @@ const curatedVideos = {
       title: 'Cooking Tip',
       channel: 'QuickChef',
       duration: '0:42',
-      thumbnailUrl: 'https://via.placeholder.com/405x720',
+      thumbnailUrl: 'https://via.placeholder.com/360x640/EF4444/ffffff?text=Cooking',
+      avatarUrl: 'https://via.placeholder.com/150/F87171/ffffff?text=QC',
       views: 34000,
       likes: 1500,
       isCurated: true
@@ -131,7 +172,7 @@ const curatedVideos = {
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'ok', 
-    message: 'XPlay API Server is running',
+    message: 'XPlayer API Server is running',
     timestamp: new Date().toISOString()
   });
 });
@@ -371,7 +412,7 @@ app.get('/api/tweet/:id', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 XPlay API Server running on http://localhost:${PORT}`);
+  console.log(`🚀 XPlayer API Server running on http://localhost:${PORT}`);
   console.log(`📺 Video endpoint: http://localhost:${PORT}/api/videos`);
   console.log(`🔍 Search endpoint: http://localhost:${PORT}/api/search/videos?query=tech`);
   

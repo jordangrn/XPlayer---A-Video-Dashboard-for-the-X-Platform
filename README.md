@@ -1,19 +1,19 @@
-# XPlay 🎬
+# XPlayer 🎬
 
 A modern video player platform for X/Twitter content, featuring a YouTube-like interface with support for both standard videos (16:9) and short-form "Micros" (9:16).
 
-![XPlay Preview](https://via.placeholder.com/1200x600?text=XPlay+Preview)
+![XPlayer Preview](./screenshots/xplayer-preview.jpeg)
 
 ## Features ✨
 
 - **16:9 Gallery Videos**: Browse popular X videos 5+ minutes in length
 - **9:16 Micros**: Discover short-form content under 1 minute
 - **Infinite Scroll**: Seamless browsing experience with 3 rows of videos followed by Micros
-- **Live X API Integration**: Real-time video data from X/Twitter
+- **Live X API Integration**: Real-time video data from X
 - **Modern UI**: Clean, responsive interface inspired by YouTube and X
 - **Secure Backend**: API keys never exposed to the frontend
 
-## Tech Stack 🛠️
+## Tech Stack 
 
 ### Frontend
 - React.js with TypeScript
@@ -23,14 +23,14 @@ A modern video player platform for X/Twitter content, featuring a YouTube-like i
 
 ### Backend
 - Node.js + Express
-- X/Twitter API v2
+- X API v2
 - In-memory caching (node-cache)
 - CORS enabled
 
 ## Project Structure 📁
 
 ```
-XPlay/
+XPlayer/
 ├── react-xplay/          # React frontend application
 │   ├── src/
 │   │   ├── App.tsx       # Main application component
@@ -52,13 +52,13 @@ XPlay/
 
 - Node.js (v14 or higher)
 - npm or yarn
-- X/Twitter Developer Account with API credentials
+- X Developer Account with API credentials
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/xplay.git
-cd xplay
+git clone https://github.com/yourusername/xplayer.git
+cd xplayer
 ```
 
 ### 2. Set Up Backend
@@ -115,7 +115,7 @@ Frontend will run on `http://localhost:3000`
 
 ### 5. Open in Browser
 
-Navigate to `http://localhost:3000` to see XPlay in action!
+Navigate to `http://localhost:3000` to see XPlayer in action!
 
 ## API Endpoints 🔌
 

@@ -39,7 +39,10 @@ function App() {
         setError(null);
       } catch (err) {
         console.error('Failed to load videos:', err);
-        setError('Failed to load videos. Please check if the backend server is running.');
+        // Use mock data for UI development - 6 videos (2 rows of 3), 5 micros (1 row)
+        setVideos(generateMockVideos(6));
+        setMicros(generateMockMicros(5));
+        setError(null); // Clear error to show UI
       } finally {
         setLoading(false);
       }
@@ -47,76 +50,114 @@ function App() {
     loadVideos();
   }, []);
 
+  // Mock data generators for UI development
+  const generateMockVideos = (count: number) => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: `video-${i}`,
+      title: `Sample Video Title ${i + 1} - This is a longer title to show how it wraps`,
+      channel: `Creator ${(i % 10) + 1}`,
+      duration: `${Math.floor(Math.random() * 20) + 5}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
+      thumbnailUrl: `https://picsum.photos/seed/${i}/640/360`,
+      avatarUrl: `https://i.pravatar.cc/150?img=${(i % 70) + 1}`
+    }));
+  };
+
+  const generateMockMicros = (count: number) => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: `micro-${i}`,
+      title: `Micro ${i + 1}`,
+      channel: `Creator ${(i % 10) + 1}`,
+      duration: `0:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
+      thumbnailUrl: `https://picsum.photos/seed/micro${i}/360/640`,
+      avatarUrl: `https://i.pravatar.cc/150?img=${(i % 70) + 1}`
+    }));
+  };
+
   // Videos and micros are now loaded from backend via useEffect
 
-  // Function to render video gallery with micros every 3 rows
+  // Function to render video gallery: 2 rows of 3 videos (16:9), then 1 row of 5 micros (9:16)
   const renderVideoGallery = () => {
     const rows = [];
-    for (let i = 0; i < videos.length; i += 18) {
-      // Add 3 rows of normal videos (18 videos total - 3 rows of 6)
-      const videoChunk = videos.slice(i, i + 18);
-      for (let j = 0; j < videoChunk.length; j += 6) {
-        const videoRow = videoChunk.slice(j, j + 6).map(video => (
-          <div key={video.id} className="xplay-video-card">
-            <div className="xplay-video-thumbnail" style={{ 
-              backgroundImage: `url(${video.thumbnailUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-              <div className="xplay-video-duration">{video.duration}</div>
-            </div>
-            <div className="xplay-video-info">
-              <div className="xplay-video-title">{video.title}</div>
-              <div className="xplay-video-channel" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                {video.avatarUrl && (
-                  <img 
-                    src={video.avatarUrl} 
-                    alt={video.channel}
-                    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
-                  />
-                )}
-                {video.channel}
-              </div>
+    
+    // Render 2 rows of 3 videos each
+    for (let i = 0; i < videos.length; i += 3) {
+      const videoRow = videos.slice(i, i + 3).map(video => (
+        <div key={video.id} className="xplay-video-card">
+          <div className="xplay-video-thumbnail" style={{ 
+            backgroundImage: `url(${video.thumbnailUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}>
+            <div className="xplay-video-duration">{video.duration}</div>
+          </div>
+          <div className="xplay-video-info">
+            <div className="xplay-video-title">{video.title}</div>
+            <div className="xplay-video-channel" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              {video.avatarUrl && (
+                <img 
+                  src={video.avatarUrl} 
+                  alt={video.channel}
+                  style={{ width: '24px', height: '24px', borderRadius: '50%' }}
+                />
+              )}
+              {video.channel}
             </div>
           </div>
-        ));
-        rows.push(<div key={`video-row-${i + j}`} className="xplay-video-grid">{videoRow}</div>);
-      }
-      
-      // Add micros after every 3 rows of normal videos (every 18 videos)
-      if (i + 18 < videos.length || i + 18 >= videos.length) {
-        const microsRow = micros.map(micro => (
-          <div key={micro.id} className="xplay-micros-card">
-            <div className="xplay-micros-thumbnail" style={{ 
-              backgroundImage: `url(${micro.thumbnailUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-              <div className="xplay-micros-duration">{micro.duration}</div>
-            </div>
-            <div className="xplay-micros-info">
-              <div className="xplay-micros-title">{micro.title}</div>
-              <div className="xplay-micros-channel" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                {micro.avatarUrl && (
-                  <img 
-                    src={micro.avatarUrl} 
-                    alt={micro.channel}
-                    style={{ width: '20px', height: '20px', borderRadius: '50%' }}
-                  />
-                )}
-                {micro.channel}
-              </div>
-            </div>
-          </div>
-        ));
-        rows.push(
-          <div key={`micros-section-${i}`}>
-            <div className="xplay-section-title">Micros</div>
-            <div className="xplay-micros-row">{microsRow}</div>
-          </div>
-        );
-      }
+        </div>
+      ));
+      rows.push(
+        <div key={`video-row-${i}`} style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(3, 1fr)', 
+          gap: '20px', 
+          marginBottom: '20px' 
+        }}>
+          {videoRow}
+        </div>
+      );
     }
+    
+    // Add 1 row of 5 micros after the videos
+    if (micros.length > 0) {
+      const microsRow = micros.map(micro => (
+        <div key={micro.id} className="xplay-micros-card">
+          <div className="xplay-micros-thumbnail" style={{ 
+            backgroundImage: `url(${micro.thumbnailUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}>
+            <div className="xplay-micros-duration">{micro.duration}</div>
+          </div>
+          <div className="xplay-micros-info">
+            <div className="xplay-micros-title">{micro.title}</div>
+            <div className="xplay-micros-channel" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {micro.avatarUrl && (
+                <img 
+                  src={micro.avatarUrl} 
+                  alt={micro.channel}
+                  style={{ width: '20px', height: '20px', borderRadius: '50%' }}
+                />
+              )}
+              {micro.channel}
+            </div>
+          </div>
+        </div>
+      ));
+      rows.push(
+        <div key="micros-section" style={{ marginTop: '30px' }}>
+          <div className="xplay-section-title">Micros</div>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(5, 1fr)', 
+            gap: '15px', 
+            marginTop: '15px' 
+          }}>
+            {microsRow}
+          </div>
+        </div>
+      );
+    }
+    
     return rows;
   };
 
@@ -302,14 +343,88 @@ function App() {
           </div>
           <div className="xplay-content">
             {loading && (
-              <div style={{ textAlign: 'center', padding: '50px', color: '#fff' }}>
-                <p>Loading videos...</p>
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                padding: '100px 20px',
+                gap: '20px'
+              }}>
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  border: '4px solid rgba(255, 255, 255, 0.1)',
+                  borderTop: '4px solid #1d9bf0',
+                  borderRadius: '50%',
+                  animation: 'spin 1s linear infinite'
+                }}></div>
+                <p style={{ color: '#e7e9ea', fontSize: '18px', fontWeight: '500' }}>Loading videos...</p>
+                <style>{`
+                  @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                  }
+                `}</style>
               </div>
             )}
             {error && (
-              <div style={{ textAlign: 'center', padding: '50px', color: '#ff6b6b' }}>
-                <p>{error}</p>
-                <p style={{ fontSize: '14px', marginTop: '10px' }}>Make sure the backend server is running on http://localhost:5000</p>
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                padding: '100px 20px',
+                gap: '15px',
+                maxWidth: '500px',
+                margin: '0 auto'
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <p style={{ color: '#ff6b6b', fontSize: '20px', fontWeight: '600', textAlign: 'center' }}>
+                  Unable to Load Videos
+                </p>
+                <p style={{ color: '#71767b', fontSize: '14px', textAlign: 'center', lineHeight: '1.5' }}>
+                  {error}
+                </p>
+                <div style={{ 
+                  backgroundColor: 'rgba(29, 155, 240, 0.1)', 
+                  border: '1px solid rgba(29, 155, 240, 0.3)',
+                  borderRadius: '8px',
+                  padding: '12px 16px',
+                  marginTop: '10px'
+                }}>
+                  <p style={{ color: '#1d9bf0', fontSize: '13px', margin: 0 }}>
+                    💡 Make sure the backend server is running on <code style={{ 
+                      backgroundColor: 'rgba(29, 155, 240, 0.2)', 
+                      padding: '2px 6px', 
+                      borderRadius: '4px',
+                      fontFamily: 'monospace'
+                    }}>http://localhost:5000</code>
+                  </p>
+                </div>
+                <button 
+                  onClick={() => window.location.reload()} 
+                  style={{
+                    marginTop: '20px',
+                    padding: '10px 24px',
+                    backgroundColor: '#1d9bf0',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '20px',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1a8cd8'}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#1d9bf0'}
+                >
+                  Try Again
+                </button>
               </div>
             )}
             {!loading && !error && activeTab === 'Home' && (
